@@ -3,10 +3,11 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { errorHandler } from './middleware/errorHandler.js';
-import { generalLimiter, chatLimiter, analyticsLimiter } from './middleware/rateLimiter.js';
+import { generalLimiter, analyticsLimiter } from './middleware/rateLimiter.js';
 import healthRouter from './routes/health.js';
 import moodsRouter from './routes/moods.js';
 import analyticsRouter from './routes/analytics.js';
+import chatRouter from './routes/chat.js';
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(generalLimiter);
 app.use('/health', healthRouter);
 app.use('/api/moods', moodsRouter);
 app.use('/api/analytics', analyticsLimiter, analyticsRouter);
+app.use('/api/chat', chatRouter);
 
 app.use((req, res) => {
   res.status(404).json({ error: `Route ${req.method} ${req.path} not found` });
