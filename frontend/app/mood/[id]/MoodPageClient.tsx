@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { useParams, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Bookmark, Share2 } from 'lucide-react';
-import { SuggestionPanel } from '@/components/SuggestionPanel';
-import { OrbVisualizer } from '@/components/OrbVisualizer';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { MoodData, Mood, Suggestion } from '@/lib/moodData';
-import { reflectiveMoods } from '@/lib/reflectiveMoods';
-import { getTraditionalMoodId } from '@/lib/moodMapping';
-import { useMoodStore } from '@/lib/useMoodStore';
+import { useState, useEffect, useRef } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowLeft, Bookmark, Share2 } from "lucide-react";
+import { SuggestionPanel } from "@/components/SuggestionPanel";
+import { OrbVisualizer } from "@/components/OrbVisualizer";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { MoodData, Mood, Suggestion } from "@/lib/moodData";
+import { reflectiveMoods } from "@/lib/reflectiveMoods";
+import { getTraditionalMoodId } from "@/lib/moodMapping";
+import { useMoodStore } from "@/lib/useMoodStore";
 
 interface MoodWithMeta extends Mood {
   traditionalId?: string;
@@ -26,13 +26,13 @@ export default function MoodPageClient({ routeId }: MoodPageClientProps) {
   const routeParams = useParams();
   const searchParams = useSearchParams();
   const id = (routeParams?.id as string) || routeId;
-  const moods = searchParams.get('moods') ?? undefined;
+  const moods = searchParams.get("moods") ?? undefined;
 
   const [moodData, setMoodData] = useState<MoodWithMeta[]>([]);
   const [suggestions, setSuggestions] = useState<Suggestion | null>(null);
   const [currentMoodIndex, setCurrentMoodIndex] = useState(0);
   const [visitEntryIds, setVisitEntryIds] = useState<string[]>([]);
-  const addMood = useMoodStore(state => state.addMood);
+  const addMood = useMoodStore((state) => state.addMood);
 
   // Guards against this effect's body (specifically the addMood() calls
   // below) running twice for the same mood-page "visit". React 18 Strict
@@ -44,17 +44,17 @@ export default function MoodPageClient({ routeId }: MoodPageClientProps) {
   const lastProcessedKeyRef = useRef<string | null>(null);
 
   useEffect(() => {
-    const visitKey = `${id}:${moods ?? ''}`;
+    const visitKey = `${id}:${moods ?? ""}`;
     if (lastProcessedKeyRef.current === visitKey) {
       return;
     }
     lastProcessedKeyRef.current = visitKey;
 
-    const moodIds = moods ? moods.split(',') : [id];
+    const moodIds = moods ? moods.split(",") : [id];
 
     const moodsData = moodIds
-      .map(mid => {
-        const reflectiveMood = reflectiveMoods.find(m => m.id === mid);
+      .map((mid) => {
+        const reflectiveMood = reflectiveMoods.find((m) => m.id === mid);
 
         if (reflectiveMood) {
           const traditionalId = getTraditionalMoodId(mid);
@@ -63,7 +63,7 @@ export default function MoodPageClient({ routeId }: MoodPageClientProps) {
           return {
             id: reflectiveMood.id,
             name: reflectiveMood.label,
-            emoji: reflectiveMood.label?.charAt(0).toUpperCase() || '✨',
+            emoji: reflectiveMood.label?.charAt(0).toUpperCase() || "✨",
             color: reflectiveMood.color,
             glow: reflectiveMood.glow,
             traditionalId,
@@ -82,23 +82,31 @@ export default function MoodPageClient({ routeId }: MoodPageClientProps) {
       setSuggestions(moodSuggestions);
     }
 
-    const ids = moodsData.map(m =>
+    const ids = moodsData.map((m) =>
       addMood({
         mood: m.id,
         emotion: m.name,
         date: new Date().toDateString(),
         color: m.color,
-      })
+      }),
     );
     setVisitEntryIds(ids);
   }, [id, moods, addMood]);
+
+  useEffect(() => {
+    if (moodData.length > 0) {
+      const currentMood = moodData[currentMoodIndex];
+      const suggestionId = currentMood.traditionalId || currentMood.id;
+      setSuggestions(MoodData.getSuggestions(suggestionId));
+    }
+  }, [currentMoodIndex, moodData]);
 
   if (!moodData.length || !suggestions) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full"
         />
       </div>
@@ -106,8 +114,7 @@ export default function MoodPageClient({ routeId }: MoodPageClientProps) {
   }
 
   const currentMood = moodData[currentMoodIndex];
-  const entryIdForPanel =
-    visitEntryIds[currentMoodIndex] ?? visitEntryIds[0];
+  const entryIdForPanel = visitEntryIds[currentMoodIndex] ?? visitEntryIds[0];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -138,10 +145,11 @@ export default function MoodPageClient({ routeId }: MoodPageClientProps) {
                       onClick={() => setCurrentMoodIndex(index)}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`text-2xl p-1 rounded-full transition-all ${index === currentMoodIndex
-                        ? 'bg-primary/10 ring-2 ring-primary/40'
-                        : 'hover:bg-muted'
-                        }`}
+                      className={`text-2xl p-1 rounded-full transition-all ${
+                        index === currentMoodIndex
+                          ? "bg-primary/10 ring-2 ring-primary/40"
+                          : "hover:bg-muted"
+                      }`}
                     >
                       {mood.emoji}
                     </motion.button>
