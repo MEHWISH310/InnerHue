@@ -38,7 +38,7 @@ export const MoodData = {
       emoji: "😰",
       color: "#FF7043",
       glow: "#FF8A65",
-      spotifyPlaylistId: "37i9dQZF1DX1s9ktjP51O3",
+      spotifyPlaylistId: "3QdD9wpA7kugRfqjAdOh5N",
     },
     excited: {
       id: "excited",
@@ -62,7 +62,7 @@ export const MoodData = {
       emoji: "😡",
       color: "#EF5350",
       glow: "#E57373",
-      spotifyPlaylistId: "37i9dQZF1DX3ladn16YrLx",
+      spotifyPlaylistId: "1rxPW5NOclEZX9V1mxwd0i",
     },
     confused: {
       id: "confused",
@@ -134,7 +134,7 @@ export const MoodData = {
       emoji: "😊",
       color: "#AED581",
       glow: "#C5E1A5",
-      spotifyPlaylistId: "37i9dQZF1DX4WYpdgoICN6",
+      spotifyPlaylistId: "1E52mHsHZqSQAfNPGzV6TY",
     },
     frustrated: {
       id: "frustrated",
@@ -142,7 +142,7 @@ export const MoodData = {
       emoji: "😠",
       color: "#FF8A65",
       glow: "#FFAB91",
-      spotifyPlaylistId: "37i9dQZF1DWTx0xog3gjnC",
+      spotifyPlaylistId: "5jFSRTCSrO2963uND8AxwN",
     },
     inspired: {
       id: "inspired",
@@ -150,7 +150,7 @@ export const MoodData = {
       emoji: "💡",
       color: "#FFD740",
       glow: "#FFE082",
-      spotifyPlaylistId: "37i9dQZF1DXa2SPFyPhl9V",
+      spotifyPlaylistId: "7L4qbPDXElR0sw75vLJobW",
     },
     melancholy: {
       id: "melancholy",
@@ -158,7 +158,7 @@ export const MoodData = {
       emoji: "🌧️",
       color: "#90A4AE",
       glow: "#B0BEC5",
-      spotifyPlaylistId: "37i9dQZF1DX59NCqCqJtoH",
+      spotifyPlaylistId: "37H2jxuWU47fuLWVHpVPq2",
     },
     motivated: {
       id: "motivated",
@@ -174,7 +174,7 @@ export const MoodData = {
       emoji: "🥺",
       color: "#F8BBD9",
       glow: "#FCE4EC",
-      spotifyPlaylistId: "37i9dQZF1DX36edUJpD76c",
+      spotifyPlaylistId: "5Cn7knHuwCC1Gh30m40JKX",
     },
     empowered: {
       id: "empowered",
@@ -238,7 +238,7 @@ export const MoodData = {
       emoji: "🤢",
       color: "#4CAF50",
       glow: "#66BB6A",
-      spotifyPlaylistId: "37i9dQZF1DX3LDIBRoa8TV",
+      spotifyPlaylistId: "1nIrpm3yU77lD1bnzqLOPg",
     },
     embarrassed: {
       id: "embarrassed",
@@ -262,7 +262,7 @@ export const MoodData = {
       emoji: "😜",
       color: "#FF4081",
       glow: "#FF80AB",
-      spotifyPlaylistId: "37i9dQZF1DXdPec7S3qG93",
+      spotifyPlaylistId: "0xCbMSh4hX9G8lccX1jkNz",
     },
     dreamy: {
       id: "dreamy",
@@ -270,7 +270,7 @@ export const MoodData = {
       emoji: "😴",
       color: "#9FA8DA",
       glow: "#C5CAE9",
-      spotifyPlaylistId: "37i9dQZF1DX2mFHE8XNn7g",
+      spotifyPlaylistId: "4346QFLufcvzbLLVf863ri",
     },
     adventurous: {
       id: "adventurous",
@@ -286,7 +286,7 @@ export const MoodData = {
       emoji: "💕",
       color: "#E1BEE7",
       glow: "#F3E5F5",
-      spotifyPlaylistId: "37i9dQZF1DX50QitC6McUH",
+      spotifyPlaylistId: "5Kqvy8t6tY8KnqOsXkATDK",
     },
     creative: {
       id: "creative",
@@ -318,7 +318,7 @@ export const MoodData = {
       emoji: "🤪",
       color: "#FFC107",
       glow: "#FFD54F",
-      spotifyPlaylistId: "37i9dQZF1DX4pUKG1kS0hS",
+      spotifyPlaylistId: "245i2gKdAmoAeDjSAxa71Q",
     },
   },
 
